@@ -27,18 +27,19 @@ services:
       frontend:
         ipv4_address: ${F_NGINX_HOST}
 
-  postgres:
-    image: postgres:11-alpine
-    container_name: ${APP_NAME}_postgres
+  mariadb:
+    image: mariadb
+    container_name: ${APP_NAME}_mariadb
     restart: always
     ports:
       - ${DB_LOCAL_PORT}:${DB_PORT}
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: "root"
     volumes:
-      - ./volumes/postgres:/var/lib/postgresql/data:rw
+      - ./volumes/mysql:/var/lib/mysql
     networks:
       backend:
         ipv4_address: ${DB_HOST}
