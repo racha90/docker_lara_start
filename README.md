@@ -7,7 +7,7 @@
 Start Laravel in Docker
 
 ```shell
-cp .env.exmaple .env
+cp .env.example .env
 docker-compose up --build -d
 ```
 
