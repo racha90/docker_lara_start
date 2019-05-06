@@ -27,9 +27,9 @@ services:
       frontend:
         ipv4_address: ${F_NGINX_HOST}
 
-  mariadb:
-    image: mariadb
-    container_name: ${APP_NAME}_mariadb
+  mysql:
+    image: mysql
+    container_name: ${APP_NAME}_mysql
     restart: always
     ports:
       - ${DB_LOCAL_PORT}:${DB_PORT}
